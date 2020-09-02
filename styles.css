@@ -10,11 +10,10 @@ red - #ee5253
 
 body {
   background: url('./assets/burger-friends.jpg');
-  background-size:  100%;
+  background-size: 100%;
   margin: 0;
   background-repeat: no-repeat;
 }
-
 
 section {
   display: flex;
@@ -28,10 +27,10 @@ header {
 }
 
 #navText {
-  padding-left: 20px;
   font-family: 'Roboto', sans-serif;
   font-weight: bolder;
   font-size: 18px;
+  margin-left: 25px;
 }
 
 #addRecipe {
@@ -39,6 +38,8 @@ header {
   margin-top: 12px;
   margin-bottom: 12px;
   border-radius: 5px;
+  border: none;
+  height: 30px;
 }
 
 .mainBox {
@@ -50,7 +51,48 @@ header {
 
 #box-one {
   margin-right: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 #box-two {
   margin-left: 75px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  margin: 15px;
+  list-style-type: none;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+}
+
+ul {
+  margin-top: 20px;
+}
+p {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 24px;
+  margin-left: 50px;
+  margin-bottom: 0;
+
+}
+
+span {
+  color: red;
+}
+
+#letsCook {
+  font-family: 'Roboto', sans-serif;
+  margin-right: 300px;
+  margin-left: 40px;
+  background-color: 0fb9b1;
+  border-radius: 5px;
+  width: 175px;
+  height: 30px;
+  border: none;
 }
