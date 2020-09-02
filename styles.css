@@ -10,7 +10,25 @@ red - #ee5253
 
 body {
   background: url('./assets/burger-friends.jpg');
-  background-size:  cover;
-  background-repeat:  no-repeat;
-  background-position:  center center;
+  background-size:  100%;
+  margin: 0;
+}
+
+header {
+  background-color: #0fb9b1;
+  display: flex;
+  justify-content: space-between;
+}
+
+#navText {
+  padding-left: 20px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: bolder;
+  font-size: 18px;
+}
+#addRecipe {
+  margin-right: 20px;
+  margin-top: 12px;
+  margin-bottom: 12px;
+  border-radius: 5px;
 }
