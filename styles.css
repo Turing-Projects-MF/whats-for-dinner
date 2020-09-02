@@ -12,6 +12,13 @@ body {
   background: url('./assets/burger-friends.jpg');
   background-size:  100%;
   margin: 0;
+  background-repeat: no-repeat;
+}
+
+
+section {
+  display: flex;
+  justify-content: center;
 }
 
 header {
@@ -26,9 +33,24 @@ header {
   font-weight: bolder;
   font-size: 18px;
 }
+
 #addRecipe {
   margin-right: 20px;
   margin-top: 12px;
   margin-bottom: 12px;
   border-radius: 5px;
+}
+
+.mainBox {
+  height: 400px;
+  width: 500px;
+  background-color: rgba(225, 225, 225, .9);
+  margin-top: 50px;
+}
+
+#box-one {
+  margin-right: 75px;
+}
+#box-two {
+  margin-left: 75px;
 }
