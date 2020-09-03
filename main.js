@@ -8,6 +8,8 @@ var cookpot = document.querySelector('#pot-image');
 var userTitle = document.querySelector('.user-title');
 var userCreation = document.querySelector('.user-creation');
 var clearButton = document.querySelector('.clear');
+var entireMeal = document.querySelector('#entire-meal');
+var inputs = document.getElementsByTagName('input');
 
 var sides = [
   'Miso Glazed Carrots',
@@ -58,24 +60,47 @@ var desserts = [
   'Fudge',
   'Chocolate Chip Cookies'
 ];
+var randomSide = randomArrayIndex(sides);
+var randomMain = randomArrayIndex(mains);
+var randomDessert = randomArrayIndex(desserts);
 
 letsCookButton.addEventListener('click', randomFoodIdea);
+clearButton.addEventListener('click', clearFood);
 
 function randomFoodIdea() {
   if (sidesRadio.checked) {
-    recipeSuggestion.innerText = randomArrayIndex(sides);
+    recipeSuggestion.innerText = randomSide;
   } else if (mainsRadio.checked) {
-    recipeSuggestion.innerText = randomArrayIndex(mains);
+    recipeSuggestion.innerText = randomMain;
   } else if (dessertsRadio.checked) {
-    recipeSuggestion.innerText = randomArrayIndex(desserts);
-  } displayHandler();
+    recipeSuggestion.innerText = randomDessert;
+  } else if (entireMeal.checked) {
+    randomWholeMeal();
+  }
+  displayHandler();
+}
+
+function randomWholeMeal() {
+  var wholeMeal = `
+    ${randomMain} with a side of ${randomSide}
+    and ${randomDessert} for dessert!
+  `;
+  recipeSuggestion.innerText = wholeMeal;
 }
 
 function displayHandler() {
-  cookpot.classList.add('hidden');
-  userTitle.classList.remove('hidden');
-  userCreation.classList.remove('hidden');
-  clearButton.classList.remove('hidden');
+  cookpot.classList.toggle('hidden');
+  userTitle.classList.toggle('hidden');
+  userCreation.classList.toggle('hidden');
+  clearButton.classList.toggle('hidden');
+}
+
+function clearFood() {
+  displayHandler();
+}
+
+function enableButton() {
+  letsCookButton.disabled = false;
 }
 
 function randomArrayIndex(foodItem) {
