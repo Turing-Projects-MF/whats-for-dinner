@@ -43,6 +43,10 @@ header {
   background-color: rgba(225, 225, 225, .9);
 }
 
+#recipe-suggestion {
+  margin-bottom: 60px;
+}
+
 .mainBox {
   height: 400px;
   width: 500px;
