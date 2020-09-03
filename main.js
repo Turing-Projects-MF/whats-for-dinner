@@ -77,8 +77,7 @@ function randomFoodIdea() {
     recipeSuggestion.innerText = randomDessert;
   } else if (entireMeal.checked) {
     randomWholeMeal();
-  }
-  displayHandler();
+  } displayHandler();
 }
 
 function randomWholeMeal() {
