@@ -120,10 +120,8 @@ span {
 }
 .clear {
   position: absolute;
-  right: 0;
-  bottom: 0;
-  margin-right: 20px;
-  margin-bottom: 20px;
+  right: 20;
+  bottom: 20;
   height: 35px;
   width: 80px;
   border-radius: 5px;
@@ -138,4 +136,8 @@ span {
   font-size: 44px;
   font-weight: bolder;
   text-align: center;
+}
+
+.hidden {
+  display: none;
 }
