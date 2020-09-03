@@ -11,7 +11,7 @@
     <main>
       <section>
         <div class="mainBox" id="box-one">
-          <p>What are you looking for?<span>*</span></p>
+          <p id="left-box-title">What are you looking for?<span>*</span></p>
           <ul>
             <li><input type="radio" name="food"> Side</li>
             <li><input type="radio" name="food"> Main Dish</li>
@@ -21,7 +21,16 @@
           <button id="letsCook">LET'S COOK!</button>
         </div>
         <div class="mainBox" id="box-two">
-          <img src="./assets/cookpot.svg" height="125" width="125">
+          <img src="./assets/cookpot.svg" height="125" width="125" hidden>
+          <div class="user-data">
+            <div class="user-title">
+              <p id="right-box-title"><em>You should make:</em><p>
+            </div>
+            <div class="user-creation">
+              <p class="recipe-suggestion">Data</p>
+            </div>
+            <button class="clear">CLEAR</button>
+          </div>
         </div>
       </section>
     </main>
