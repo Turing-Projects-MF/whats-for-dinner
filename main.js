@@ -64,7 +64,8 @@ var randomSide = randomArrayIndex(sides);
 var randomMain = randomArrayIndex(mains);
 var randomDessert = randomArrayIndex(desserts);
 
-letsCookButton.addEventListener('click', randomFoodIdea);
+letsCookButton.addEventListener('mousedown', randomFoodIdea);
+letsCookButton.addEventListener('mouseup', disableOnSubmit);
 clearButton.addEventListener('click', clearFood);
 
 function randomFoodIdea() {
@@ -89,18 +90,28 @@ function randomWholeMeal() {
 }
 
 function displayHandler() {
-  cookpot.classList.toggle('hidden');
-  userTitle.classList.toggle('hidden');
-  userCreation.classList.toggle('hidden');
-  clearButton.classList.toggle('hidden');
+  cookpot.classList.add('hidden');
+  userTitle.classList.remove('hidden');
+  userCreation.classList.remove('hidden');
+  clearButton.classList.remove('hidden');
 }
 
 function clearFood() {
-  displayHandler();
+  cookpot.classList.remove('hidden');
+  userTitle.classList.add('hidden');
+  userCreation.classList.add('hidden');
+  clearButton.classList.add('hidden');
 }
 
 function enableButton() {
   letsCookButton.disabled = false;
+}
+
+function disableOnSubmit() {
+  letsCookButton.disabled = true;
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].checked = false;
+  }
 }
 
 function randomArrayIndex(foodItem) {
