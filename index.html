@@ -13,23 +13,23 @@
         <div class="mainBox" id="box-one">
           <p id="left-box-title">What are you looking for?<span>*</span></p>
           <ul>
-            <li><input type="radio" name="food"> Side</li>
-            <li><input type="radio" name="food"> Main Dish</li>
-            <li><input type="radio" name="food"> Dessert</li>
+            <li><input type="radio" name="food" id="side-food"> Side</li>
+            <li><input type="radio" name="food" id="main-food"> Main Dish</li>
+            <li><input type="radio" name="food" id="dessert-food"> Dessert</li>
             <li><input type="radio" name="food"> Entire Meal</li>
           </ul>
           <button id="letsCook">LET'S COOK!</button>
         </div>
         <div class="mainBox" id="box-two">
-          <img src="./assets/cookpot.svg" height="125" width="125" hidden>
+          <img id='pot-image' src="./assets/cookpot.svg" height="125" width="125">
           <div class="user-data">
-            <div class="user-title">
+            <div class="user-title hidden">
               <p id="right-box-title"><em>You should make:</em><p>
             </div>
-            <div class="user-creation">
+            <div class="user-creation hidden">
               <p class="recipe-suggestion">Data</p>
             </div>
-            <button class="clear">CLEAR</button>
+            <button class="clear hidden">CLEAR</button>
           </div>
         </div>
       </section>
