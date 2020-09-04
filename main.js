@@ -74,6 +74,7 @@ letsCookButton.addEventListener('mouseup', disableOnSubmit);
 clearButton.addEventListener('click', clearFood);
 addRecipeButton.addEventListener('click', displayFooter);
 addNewButton.addEventListener('click', submitUserRecipe);
+addNewButton.addEventListener('mouseover', errorValidation);
 
 function randomFoodIdea() {
   if (sidesRadio.checked) {
@@ -148,6 +149,12 @@ function addRecipeToStorage() {
 function clearInputFields() {
   rNameInput.value = '';
   rTypeInput.value = '';
+}
+
+function errorValidation() {
+  if (rNameInput.value === '' || rTypeInput.value === '') {
+    alert `Please fill out each field!`
+  }
 }
 
 function randomArrayIndex(foodItem) {
