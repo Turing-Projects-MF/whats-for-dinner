@@ -15,6 +15,8 @@ var addNewButton = document.querySelector('#add-new');
 var rTypeInput = document.querySelector('#type-input');
 var rNameInput = document.querySelector('#name-input');
 var footer = document.querySelector('footer');
+var overlay = document.getElementById('overlay');
+var loader = document.querySelector('.loader');
 
 var sides = [
   'Miso Glazed Carrots',
@@ -75,8 +77,10 @@ clearButton.addEventListener('click', clearFood);
 addRecipeButton.addEventListener('click', displayFooter);
 addNewButton.addEventListener('click', submitUserRecipe);
 addNewButton.addEventListener('mouseover', errorValidation);
+loader.addEventListener('animationend', showMealSuggestion)
 
 function randomFoodIdea() {
+  displayHandler();
   if (sidesRadio.checked) {
     recipeSuggestion.innerText = randomSide;
   } else if (mainsRadio.checked) {
@@ -85,7 +89,12 @@ function randomFoodIdea() {
     recipeSuggestion.innerText = randomDessert;
   } else if (entireMeal.checked) {
     randomWholeMeal();
-  } displayHandler();
+  }
+}
+
+function displayHandler() {
+  loader.classList.remove('hidden');
+  cookpot.classList.add('hidden');
 }
 
 function randomWholeMeal() {
@@ -96,14 +105,21 @@ function randomWholeMeal() {
   recipeSuggestion.innerText = wholeMeal;
 }
 
-function displayHandler() {
-  cookpot.classList.add('hidden');
+function showMealSuggestion() {
   userTitle.classList.remove('hidden');
   userCreation.classList.remove('hidden');
   clearButton.classList.remove('hidden');
 }
 
+//function animationHandler() {
+//mousedown, add hidden to Pot, remove from loader, randomFoodIdea()
+//mouseup, disableOnSubmit
+//animationend displayHandler
+
+//}
+
 function clearFood() {
+  loader.classList.add('hidden')
   cookpot.classList.remove('hidden');
   userTitle.classList.add('hidden');
   userCreation.classList.add('hidden');
