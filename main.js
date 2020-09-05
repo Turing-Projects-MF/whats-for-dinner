@@ -67,9 +67,6 @@ var desserts = [
   'Fudge',
   'Chocolate Chip Cookies'
 ];
-var randomSide = randomArrayIndex(sides);
-var randomMain = randomArrayIndex(mains);
-var randomDessert = randomArrayIndex(desserts);
 
 letsCookButton.addEventListener('mousedown', randomFoodIdea);
 letsCookButton.addEventListener('mouseup', disableOnSubmit);
@@ -80,16 +77,15 @@ addNewButton.addEventListener('mouseover', errorValidation);
 loader.addEventListener('animationend', showMealSuggestion)
 
 function randomFoodIdea() {
-  displayHandler();
   if (sidesRadio.checked) {
-    recipeSuggestion.innerText = randomSide;
+    recipeSuggestion.innerText = randomArrayIndex(sides);
   } else if (mainsRadio.checked) {
-    recipeSuggestion.innerText = randomMain;
+    recipeSuggestion.innerText = randomArrayIndex(mains);
   } else if (dessertsRadio.checked) {
-    recipeSuggestion.innerText = randomDessert;
+    recipeSuggestion.innerText = randomArrayIndex(desserts);
   } else if (entireMeal.checked) {
     randomWholeMeal();
-  }
+  } displayHandler();
 }
 
 function displayHandler() {
@@ -111,12 +107,6 @@ function showMealSuggestion() {
   clearButton.classList.remove('hidden');
 }
 
-//function animationHandler() {
-//mousedown, add hidden to Pot, remove from loader, randomFoodIdea()
-//mouseup, disableOnSubmit
-//animationend displayHandler
-
-//}
 
 function clearFood() {
   loader.classList.add('hidden')
