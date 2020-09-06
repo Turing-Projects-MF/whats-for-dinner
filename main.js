@@ -17,6 +17,7 @@ var rNameInput = document.querySelector('#name-input');
 var footer = document.querySelector('footer');
 var overlay = document.getElementById('overlay');
 var loader = document.querySelector('.loader');
+var userDials = document.querySelector('#user-dials');
 
 var sides = [
   'Miso Glazed Carrots',
@@ -67,6 +68,8 @@ var desserts = [
   'Fudge',
   'Chocolate Chip Cookies'
 ];
+var userSubmissions = [];
+var currerntUserIdea;
 //var randomMain = randomArrayIndex(mains);
 
 letsCookButton.addEventListener('mousedown', randomFoodIdea);
@@ -156,23 +159,25 @@ function addRecipeToStorage() {
   }
 }
 
-var currerntUserIdea;
-var userSubmissions = [];
-
 function addUserRicipeToRadio() {
-  var userDials = document.querySelector('#user-dials');
   var newRadials = '';
   for (var i = 0; i < userSubmissions.length; i++) {
     var addDom = `
       <li><input type="radio" name="food" id="${userSubmissions[i].type}-food" onclick="enableButton()"> ${userSubmissions[i].type}</li>
       `;
-      newRadials += addDom;
+      if (!newRadials.includes(addDom)) {
+        newRadials += addDom;
+      }
   } userDials.innerHTML = newRadials;
 }
 
 function addUserRicipeToStorage() {
   currerntUserIdea = new UserIdea(rTypeInput.value, rNameInput.value);
-  userSubmissions.push(currerntUserIdea);
+  if (!userSubmissions.includes(currerntUserIdea)) {
+    userSubmissions.push(currerntUserIdea);
+  } else {
+    alert `Recipe has already been added!`;
+  }
 }
 
 function clearInputFields() {
