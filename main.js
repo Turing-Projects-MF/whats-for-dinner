@@ -156,12 +156,12 @@ function addRecipeToStorage() {
   } else if (userRecipeType.toLowerCase() === 'dessert') {
     desserts.push(userDish);
   } else {
-    addUserRicipeToStorage();
-    addUserRicipeToRadio();
+    addUserRecipeToStorage();
+    addUserRecipeToRadio();
   }
 }
 
-function addUserRicipeToRadio() {
+function addUserRecipeToRadio() {
   var newRadials = '';
   for (var i = 0; i < userSubmissions.length; i++) {
     var addDom = `
@@ -173,13 +173,14 @@ function addUserRicipeToRadio() {
   } userDials.innerHTML = newRadials;
 }
 
-function addUserRicipeToStorage() {
+function addUserRecipeToStorage() {
   currerntUserIdea = new UserIdea(rTypeInput.value, rNameInput.value);
-  if (!userSubmissions.includes(currerntUserIdea)) {
-    userSubmissions.push(currerntUserIdea);
-  } else {
-    alert `Recipe has already been added!`;
-  }
+  for (var i = 0; i < userSubmissions.length; i++) {
+    if (userSubmissions[i].type === currerntUserIdea.type && userSubmissions[i].name === currerntUserIdea.name) {
+      alert `Recipe has already been added!`;
+      return false;
+    }
+  } userSubmissions.push(currerntUserIdea);
 }
 
 function clearInputFields() {
