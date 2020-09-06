@@ -67,6 +67,7 @@ var desserts = [
   'Fudge',
   'Chocolate Chip Cookies'
 ];
+//var randomMain = randomArrayIndex(mains);
 
 letsCookButton.addEventListener('mousedown', randomFoodIdea);
 letsCookButton.addEventListener('mouseup', disableOnSubmit);
@@ -95,8 +96,8 @@ function displayHandler() {
 
 function randomWholeMeal() {
   var wholeMeal = `
-    ${randomMain} with a side of ${randomSide}
-    and ${randomDessert} for dessert!
+    ${randomArrayIndex(mains)} with a side of ${randomArrayIndex(sides)}
+    and ${randomArrayIndex(desserts)} for dessert!
   `;
   recipeSuggestion.innerText = wholeMeal;
 }
@@ -149,7 +150,29 @@ function addRecipeToStorage() {
     mains.push(userDish);
   } else if (userRecipeType.toLowerCase() === 'dessert') {
     desserts.push(userDish);
+  } else {
+    addUserRicipeToStorage();
+    addUserRicipeToRadio();
   }
+}
+
+var currerntUserIdea;
+var userSubmissions = [];
+
+function addUserRicipeToRadio() {
+  var userDials = document.querySelector('#user-dials');
+  var newRadials = '';
+  for (var i = 0; i < userSubmissions.length; i++) {
+    var addDom = `
+      <li><input type="radio" name="food" id="${userSubmissions[i].type}-food" onclick="enableButton()"> ${userSubmissions[i].type}</li>
+      `;
+      newRadials += addDom;
+  } userDials.innerHTML = newRadials;
+}
+
+function addUserRicipeToStorage() {
+  currerntUserIdea = new UserIdea(rTypeInput.value, rNameInput.value);
+  userSubmissions.push(currerntUserIdea);
 }
 
 function clearInputFields() {
