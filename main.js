@@ -17,6 +17,7 @@ var rNameInput = document.querySelector('#name-input');
 var footer = document.querySelector('footer');
 var overlay = document.getElementById('overlay');
 var loader = document.querySelector('.loader');
+var userDials = document.querySelector('#user-dials');
 
 var sides = [
   'Miso Glazed Carrots',
@@ -67,9 +68,9 @@ var desserts = [
   'Fudge',
   'Chocolate Chip Cookies'
 ];
-var randomSide = randomArrayIndex(sides);
-var randomMain = randomArrayIndex(mains);
-var randomDessert = randomArrayIndex(desserts);
+var userSubmissions = [];
+var currerntUserIdea;
+//var randomMain = randomArrayIndex(mains);
 
 letsCookButton.addEventListener('mousedown', randomFoodIdea);
 letsCookButton.addEventListener('mouseup', disableOnSubmit);
@@ -80,16 +81,15 @@ addNewButton.addEventListener('mouseover', errorValidation);
 loader.addEventListener('animationend', showMealSuggestion)
 
 function randomFoodIdea() {
-  displayHandler();
   if (sidesRadio.checked) {
-    recipeSuggestion.innerText = randomSide;
+    recipeSuggestion.innerText = randomArrayIndex(sides);
   } else if (mainsRadio.checked) {
-    recipeSuggestion.innerText = randomMain;
+    recipeSuggestion.innerText = randomArrayIndex(mains);
   } else if (dessertsRadio.checked) {
-    recipeSuggestion.innerText = randomDessert;
+    recipeSuggestion.innerText = randomArrayIndex(desserts);
   } else if (entireMeal.checked) {
     randomWholeMeal();
-  }
+  } displayHandler();
 }
 
 function displayHandler() {
@@ -99,8 +99,8 @@ function displayHandler() {
 
 function randomWholeMeal() {
   var wholeMeal = `
-    ${randomMain} with a side of ${randomSide}
-    and ${randomDessert} for dessert!
+    ${randomArrayIndex(mains)} with a side of ${randomArrayIndex(sides)}
+    and ${randomArrayIndex(desserts)} for dessert!
   `;
   recipeSuggestion.innerText = wholeMeal;
 }
@@ -111,12 +111,6 @@ function showMealSuggestion() {
   clearButton.classList.remove('hidden');
 }
 
-//function animationHandler() {
-//mousedown, add hidden to Pot, remove from loader, randomFoodIdea()
-//mouseup, disableOnSubmit
-//animationend displayHandler
-
-//}
 
 function clearFood() {
   loader.classList.add('hidden')
@@ -128,6 +122,8 @@ function clearFood() {
 
 function enableButton() {
   letsCookButton.disabled = false;
+  footer.classList.add('hidden');
+  clearFood();
 }
 
 function disableOnSubmit() {
@@ -138,7 +134,8 @@ function disableOnSubmit() {
 }
 
 function displayFooter() {
-  footer.classList.remove('hidden');
+  clearFood();
+  footer.classList.toggle('hidden');
 }
 
 function submitUserRecipe() {
@@ -149,7 +146,6 @@ function submitUserRecipe() {
   clearInputFields();
 }
 
-
 function addRecipeToStorage() {
   var userRecipeType = rTypeInput.value;
   var userDish = rNameInput.value
@@ -159,6 +155,30 @@ function addRecipeToStorage() {
     mains.push(userDish);
   } else if (userRecipeType.toLowerCase() === 'dessert') {
     desserts.push(userDish);
+  } else {
+    addUserRicipeToStorage();
+    addUserRicipeToRadio();
+  }
+}
+
+function addUserRicipeToRadio() {
+  var newRadials = '';
+  for (var i = 0; i < userSubmissions.length; i++) {
+    var addDom = `
+      <li><input type="radio" name="food" id="${userSubmissions[i].type}-food" onclick="enableButton()"> ${userSubmissions[i].type}</li>
+      `;
+      if (!newRadials.includes(addDom)) {
+        newRadials += addDom;
+      }
+  } userDials.innerHTML = newRadials;
+}
+
+function addUserRicipeToStorage() {
+  currerntUserIdea = new UserIdea(rTypeInput.value, rNameInput.value);
+  if (!userSubmissions.includes(currerntUserIdea)) {
+    userSubmissions.push(currerntUserIdea);
+  } else {
+    alert `Recipe has already been added!`;
   }
 }
 

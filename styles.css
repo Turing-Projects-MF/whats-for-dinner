@@ -91,10 +91,6 @@ footer {
   font-family: 'Roboto', sans-serif;
 }
 
-#recipe-suggestion {
-  margin-bottom: 60px;
-}
-
 .mainBox {
   height: 400px;
   width: 500px;
@@ -185,7 +181,7 @@ span {
 .recipe-suggestion {
   font-family: 'Roboto', sans-serif;
   margin-top: 0;
-  font-size: 44px;
+  font-size: 40px;
   font-weight: bolder;
   text-align: center;
 }
@@ -197,20 +193,22 @@ span {
 .loader {
   border: 16px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 16px solid #3498db;
-  width: 120px;
-  height: 120px;
+  border-top: 16px solid #0fb9b1;
+  width: 60px;
+  height: 60px;
   animation: spin 2s linear forwards;
 }
 
 @keyframes spin {
   0% {
     transform: rotate(0deg);
+    opacity: 1;
    }
   100% {
     transform: rotate(360deg);
     display: none;
     visibility: hidden;
+    opacity: 0;
   }
 }
 
@@ -221,4 +219,8 @@ span {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.list-container {
+  display: flex;
 }
