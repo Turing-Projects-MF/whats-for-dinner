@@ -122,6 +122,8 @@ function clearFood() {
 
 function enableButton() {
   letsCookButton.disabled = false;
+  footer.classList.add('hidden');
+  clearFood();
 }
 
 function disableOnSubmit() {
@@ -132,7 +134,8 @@ function disableOnSubmit() {
 }
 
 function displayFooter() {
-  footer.classList.remove('hidden');
+  clearFood();
+  footer.classList.toggle('hidden');
 }
 
 function submitUserRecipe() {
@@ -142,7 +145,6 @@ function submitUserRecipe() {
   recipeSuggestion.innerText = rNameInput.value;
   clearInputFields();
 }
-
 
 function addRecipeToStorage() {
   var userRecipeType = rTypeInput.value;
