@@ -91,10 +91,6 @@ footer {
   font-family: 'Roboto', sans-serif;
 }
 
-#recipe-suggestion {
-  margin-bottom: 60px;
-}
-
 .mainBox {
   height: 400px;
   width: 500px;
@@ -185,7 +181,7 @@ span {
 .recipe-suggestion {
   font-family: 'Roboto', sans-serif;
   margin-top: 0;
-  font-size: 44px;
+  font-size: 40px;
   font-weight: bolder;
   text-align: center;
 }
