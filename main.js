@@ -69,8 +69,6 @@ var desserts = [
   'Chocolate Chip Cookies'
 ];
 var userSubmissions = [];
-var currerntUserIdea;
-//var randomMain = randomArrayIndex(mains);
 
 letsCookButton.addEventListener('mousedown', randomFoodIdea);
 letsCookButton.addEventListener('mouseup', disableOnSubmit);
@@ -110,7 +108,6 @@ function showMealSuggestion() {
   userCreation.classList.remove('hidden');
   clearButton.classList.remove('hidden');
 }
-
 
 function clearFood() {
   loader.classList.add('hidden')
@@ -174,13 +171,15 @@ function addUserRecipeToRadio() {
 }
 
 function addUserRecipeToStorage() {
-  currerntUserIdea = new UserIdea(rTypeInput.value, rNameInput.value);
+  var inputType = rTypeInput.value;
+  var inputName = rNameInput.value;
   for (var i = 0; i < userSubmissions.length; i++) {
-    if (userSubmissions[i].type === currerntUserIdea.type && userSubmissions[i].name === currerntUserIdea.name) {
-      alert `Recipe has already been added!`;
-      return false;
+    if (userSubmissions[i].type === inputType) {
+      userSubmissions[i].items.push(inputName);
+      return;
     }
-  } userSubmissions.push(currerntUserIdea);
+  }
+  userSubmissions.push(new UserIdea(inputType, inputName));
 }
 
 function clearInputFields() {
